@@ -29,3 +29,12 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.PAT_TOKEN }}
+        publish_dir: ./playwright-report
